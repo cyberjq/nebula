@@ -19,7 +19,7 @@ import Country from "@/components/Country";
 import Russia from "@/components/Russia";
 import World from "@/components/World";
 import MethodsOfProtection from "@/components/MethodsOfProtection";
-import Contacts from "@/components/Сontacts"
+import Contacts from "@/components/Contacts"
 
 export default {
   name: 'App',
