@@ -85,8 +85,8 @@ export default {
 
 .greeting-text {
   position: absolute;
-  left: 22%;
-  right: 39%;
+  left: 23%;
+  right: 38%;
   top: 2.5%;
   bottom: 97.08%;
 
