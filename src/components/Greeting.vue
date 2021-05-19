@@ -86,7 +86,7 @@ export default {
 .greeting-text {
   position: absolute;
   left: 22%;
-  right: 37.5%;
+  right: 39%;
   top: 2.5%;
   bottom: 97.08%;
 
@@ -107,7 +107,7 @@ export default {
   width: 792px;
   height: 798px;
   left: 1051px;
-  top: 282px;
+  top: 305px;
 }
 
 </style>
