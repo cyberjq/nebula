@@ -32,7 +32,14 @@ export default {
     World,
     MethodsOfProtection,
     Contacts
+  },
+
+  created() {
+    window.onbeforeunload = function () {
+      window.scrollTo(0, 0);
+    }
   }
+
 }
 </script>
 
@@ -41,7 +48,7 @@ export default {
 @import url('https://fonts.googleapis.com/css2?family=Jura&display=swap');
 
 body {
-
+  overflow: hidden;
   font-family: 'Jura', sans-serif;
 
   margin: 0;
@@ -73,8 +80,9 @@ body {
   height: 2304px;
   top: 2160px;
   background: #ffffff url("assets/about-us.svg");
-  background-size: cover;
-  background-position-y: -107px;
+  /*background-size: cover;*/
+  background-position: bottom;
+  /*background-position-y: 230%;*/
 
 }
 
@@ -113,6 +121,7 @@ body {
   height: 100%;
   top: 7060px;
   background: #ffffff url("assets/methods-of-protection-background.svg") no-repeat;
+  background-size: contain;
 }
 
 .contacts {
@@ -122,6 +131,7 @@ body {
   height: 88%;
   top: 8200px;
   background: #ffffff url("assets/contacts.png") no-repeat;
+  background-size: cover;
 }
 
 </style>
