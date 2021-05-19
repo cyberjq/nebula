@@ -5,8 +5,10 @@
       <AboutUs class="about-us"></AboutUs>
       <Country class="country"></Country>
       <Russia class="russia"></Russia>
+      <World class="world"></World>
+      <MethodsOfProtection class="methods-of-protection"></MethodsOfProtection>
+      <Contacts class="contacts"></Contacts>
   </div>
-
 </template>
 
 <script>
@@ -15,6 +17,9 @@ import SocialEngineering from './components/SocialEngineering'
 import AboutUs from "@/components/AboutUs";
 import Country from "@/components/Country";
 import Russia from "@/components/Russia";
+import World from "@/components/World";
+import MethodsOfProtection from "@/components/MethodsOfProtection";
+import Contacts from "@/components/Сontacts"
 
 export default {
   name: 'App',
@@ -23,7 +28,10 @@ export default {
     SocialEngineering,
     AboutUs,
     Country,
-    Russia
+    Russia,
+    World,
+    MethodsOfProtection,
+    Contacts
   }
 }
 </script>
@@ -85,6 +93,35 @@ body {
   background: #ffffff url("assets/russia-background.svg");
   background-size: cover;
   /*background-position-y: -107px;*/
+}
+
+.world {
+  position: absolute;
+  width: 100%;
+  /*height: 100%;*/
+  height: 1080px;
+  top: 5980px;
+  background: #ffffff url("assets/world-background.svg");
+  background-size: cover;
+  /*background-position-y: -107px;*/
+}
+
+.methods-of-protection {
+  position: absolute;
+  width: 100%;
+  /*height: 100%;*/
+  height: 100%;
+  top: 7060px;
+  background: #ffffff url("assets/methods-of-protection-background.svg") no-repeat;
+}
+
+.contacts {
+  position: absolute;
+  width: 100%;
+  /*height: 100%;*/
+  height: 88%;
+  top: 8200px;
+  background: #ffffff url("assets/contacts.png") no-repeat;
 }
 
 </style>

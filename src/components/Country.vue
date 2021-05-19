@@ -8,7 +8,7 @@
         <div class="content">
           <!--Россия -->
           <div >
-            <div class="title-russia">Российская Федерация</div>
+            <div class="title">Российская Федерация</div>
             <div class="row">
               <div class="border-left-div"></div>
               <div class="text">
@@ -109,7 +109,7 @@ export default {
   flex-direction: row;
 }
 
-.title-russia {
+.title {
 
   margin: 0 0 1.5em 0;
   font-style: normal;
