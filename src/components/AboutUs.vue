@@ -79,21 +79,33 @@ export default {
           "text5",
         "text6"
       ],
-      activeText: ""
+      activeText: "",
+      currentId: 0,
     }
   },
 
   methods: {
 
     selectMethod(id) {
-       this.activeText = this.methodsText[id]
+       this.activeText = this.methodsText[id];
+
+        const button = document.getElementById("button-" + id)
+        button.classList.remove("header-methods-button")
+        button.classList.add("header-methods-button-active")
+
+        const button1 = document.getElementById("button-" + this.currentId)
+        button1.classList.remove("header-methods-button-active")
+        button1.classList.add("header-methods-button")
+        this.currentId = id;
     }
   },
 
   mounted() {
     if (this.methodsText.length > 0) {
       this.activeText = this.methodsText[0]
-      // document.getElementById("button-0").className += "header-methods-button-active"
+      const button = document.getElementById("button-0")
+      button.classList.remove("header-methods-button")
+      button.classList.add("header-methods-button-active")
     } else {
       this.activeText = "Текст не найден"
     }
@@ -138,31 +150,7 @@ export default {
   align-items: center;
 }
 
-
-
-/*.about-us-p {*/
-/*  position: absolute;*/
-/*  width: 100%;*/
-/*  height: 100%;*/
-/*  display: flex;*/
-/*  !* О НАС *!*/
-/*  font-style: normal;*/
-/*  font-weight: bold;*/
-/*  font-size: 55px;*/
-/*  line-height: 116.3%;*/
-/*  letter-spacing: 0.1em;*/
-/*  color: #000000;*/
-/*  justify-content: center;*/
-/*  align-items: center;*/
-/*}*/
-
-
 .header-about-us-div {
-  /*position: absolute;*/
-  /*width: 80%;*/
-  /*left: 10%;*/
-  /*right: 10%;*/
-  /*top: 286px;*/
   height: 60px;
   margin: 9em 12em 0 12em;
   display: flex;
@@ -177,7 +165,7 @@ export default {
   font-weight: bold;
   font-size: 24px;
   line-height: 116.3%;
-  /* or 28px */
+
   letter-spacing: 0.1em;
   align-items: center;
   justify-content: center;
@@ -189,11 +177,6 @@ export default {
 
 .body-about-us-div {
   height: 287px;
-  /*position: absolute;*/
-  /*width: 80%;*/
-  /*left: 10%;*/
-  /*right: 10%;*/
-  /*top: 357px;*/
   margin: 0.5em 12em 0 12em;
   display: flex;
   justify-content: space-around;
@@ -222,7 +205,6 @@ export default {
   /*position: absolute;*/
   width: 100%;
   height: 52px;
-  /*top: 701px;*/
 
   margin: 1.5em 0 0.5em 0 ;
 
@@ -242,7 +224,6 @@ export default {
 .arrows-div {
   /*position: absolute;*/
   display: flex;
-  /*top: 777px;*/
   width: 100%;
   justify-content: center;
 }
@@ -286,9 +267,33 @@ export default {
   transition: all 0.3s ease;
 }
 
+.header-methods-button-active:focus, .header-methods-button-active:active {
+  outline: none
+}
+
 .header-methods-button-active {
   background: rgba(36, 42, 48, 0.7);
   backdrop-filter: blur(3px);
+  margin: 0 0.2em 0 0.2em;
+  width: 100%;
+  height: 70%;
+
+  -webkit-transition: all 0.3s ease;;
+  -moz-transition: all 0.3s ease;;
+  -o-transition: all 0.3s ease;;
+  transition: all 0.3s ease;
+
+  border-radius: 46px;
+  border: 0;
+
+  font-family: Jura,sans-serif;
+  font-style: normal;
+  font-size: 20px;
+  line-height: 116.3%;
+  /* or 23px */
+  letter-spacing: 0.05em;
+
+  color: #FFFFFF;
 }
 
 

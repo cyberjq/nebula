@@ -6,7 +6,7 @@
         <button v-for="(name, index) in methodsName"
                 class="header-methods-button"
                 :key="index"
-                :id="'button-' + index"
+                :id="'button-russia-' + index"
                 @click="selectMethod(index)">
           {{name}}
         </button>
@@ -61,7 +61,8 @@ export default {
       activeText: {
         title: "",
         text: "",
-      }
+      },
+      currentId: 0,
     }
   },
 
@@ -70,6 +71,15 @@ export default {
     selectMethod(id) {
       this.activeText.text = this.methodsText[id]
       this.activeText.title = this.methodsName[id]
+
+      const button = document.getElementById("button-russia-" + id)
+      button.classList.remove("header-methods-button")
+      button.classList.add("header-methods-button-active")
+
+      const button1 = document.getElementById("button-russia-" + this.currentId)
+      button1.classList.remove("header-methods-button-active")
+      button1.classList.add("header-methods-button")
+      this.currentId = id;
     }
   },
 
@@ -77,6 +87,10 @@ export default {
     if (this.methodsText.length > 0) {
       this.activeText.text = this.methodsText[0]
       this.activeText.title = this.methodsName[0]
+
+      const button = document.getElementById("button-russia-0")
+      button.classList.remove("header-methods-button")
+      button.classList.add("header-methods-button-active")
     } else {
       this.activeText.text = "Текст не найден"
       this.activeText.title = "Заголовок"
@@ -134,9 +148,33 @@ export default {
   transition: all 0.3s ease;
 }
 
+.header-methods-button-active:focus, .header-methods-button-active:active {
+  outline: none
+}
+
 .header-methods-button-active {
   background: rgba(36, 42, 48, 0.7);
   backdrop-filter: blur(3px);
+  margin: 0 0.2em 0 0.2em;
+  width: 100%;
+  height: 70%;
+
+  -webkit-transition: all 0.3s ease;;
+  -moz-transition: all 0.3s ease;;
+  -o-transition: all 0.3s ease;;
+  transition: all 0.3s ease;
+
+  border-radius: 46px;
+  border: 0;
+
+  font-family: Jura,sans-serif;
+  font-style: normal;
+  font-size: 20px;
+  line-height: 116.3%;
+  /* or 23px */
+  letter-spacing: 0.05em;
+
+  color: #FFFFFF;
 }
 
 

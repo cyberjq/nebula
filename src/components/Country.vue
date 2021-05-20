@@ -4,7 +4,11 @@
         ВЫБЕРИТЕ НЕОБХОДИМУЮ ОБЛАСТЬ ДЛЯ ПРОДОЛЖЕНИЯ
     </div>
     <div class="select-country-background">
-        <img :src="images.map" class="map-img"/>
+        <div class="map-russian-div " @mouseover="mouseOverRussianMap" @mouseleave="mouseLeaveRussianMap">
+          <img :src="russianMap" v-if="isRussianMap" class="map-russian" >
+        </div>
+      <img :src="currentMap" @mouseover="mouseOverCurrentMap" @mouseleave="mouseLeaveCurrentMap" class="map-img"/>
+
         <div class="content">
           <!--Россия -->
           <div >
@@ -40,10 +44,52 @@ export default {
 
   data() {
     return {
+
       images: {
-        map: require("@/assets/map.png")
+        map: require("@/assets/map.svg"),
+        worldMap: require("@/assets/world-map.svg"),
+        russianMap: require("@/assets/russian-map.svg")
+      },
+      currentMap: "",
+      russianMap: "",
+      isRussianMap: false,
+
+      classObject: {
+        active: false,
+        position: "absolute"
       }
     }
+  },
+
+  methods: {
+    mouseOverCurrentMap() {
+      this.currentMap = this.images.worldMap;
+      const title = document.getElementsByClassName("title-other")[0]
+      title.classList.add("shadow")
+    },
+
+    mouseLeaveCurrentMap() {
+      this.currentMap = this.images.map;
+      const title = document.getElementsByClassName("title-other")[0]
+      title.classList.remove("shadow")
+    },
+
+    mouseOverRussianMap(){
+      this.isRussianMap = true
+      const title = document.getElementsByClassName("title")[0]
+      title.classList.add("shadow")
+    },
+
+    mouseLeaveRussianMap() {
+      this.isRussianMap = false
+      const title = document.getElementsByClassName("title")[0]
+      title.classList.remove("shadow")
+    }
+  },
+
+  mounted() {
+    this.currentMap = this.images.map;
+    this.russianMap = this.images.russianMap;
   }
 }
 </script>
@@ -79,9 +125,26 @@ export default {
 }
 
 .map-img {
+  margin: 6em 6em 6em 6em;
+
+}
+
+.map-russian:hover {
+  visibility: visible;
+}
+
+.map-russian-div {
+  position: absolute;
+  width: 600px;
+  height: 380.9125px;
+  top: 98px;
+  left: 680px
+}
+
+.map-russian {
+  position: absolute;
   width: 100%;
-  height: 90%;
-  top: 50px;
+  height: 100%;
 }
 
 .border-left-div {
@@ -109,6 +172,15 @@ export default {
   flex-direction: row;
 }
 
+.shadow {
+
+  -webkit-transition: all 0.3s ease;;
+  -moz-transition: all 0.3s ease;;
+  -o-transition: all 0.3s ease;;
+  transition: all 0.3s ease;
+  text-shadow: 0px 0px 15px white;
+}
+
 .title {
 
   margin: 0 0 1.5em 0;
@@ -122,6 +194,12 @@ export default {
   letter-spacing: 0.1em;
 
   color: #FFFFFF;
+
+  -webkit-transition: all 0.3s ease;;
+  -moz-transition: all 0.3s ease;;
+  -o-transition: all 0.3s ease;;
+  transition: all 0.3s ease;
+
 }
 
 .title-other {
@@ -135,6 +213,11 @@ export default {
   letter-spacing: 0.1em;
 
   color: #FFFFFF;
+
+  -webkit-transition: all 0.3s ease;;
+  -moz-transition: all 0.3s ease;;
+  -o-transition: all 0.3s ease;;
+  transition: all 0.3s ease;
 }
 
 .text {
