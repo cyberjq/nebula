@@ -39,7 +39,6 @@ export default {
       console.log(body);
       body.style.overflow = "auto";
 
-
     },
 
   }

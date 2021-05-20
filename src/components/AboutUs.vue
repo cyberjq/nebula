@@ -41,27 +41,18 @@
       <div class="arrows-div"><img :src="images.arrows" class="arrows-img"/></div>
       <div class="header-methods-div">
         <div class="header-methods-buttons">
-          <button class="header-methods-button">Фишинг</button>
-          <button class="header-methods-button">Троян-вымогатель</button>
-          <button class="header-methods-button">Взлом деловой электронной почты</button>
-          <button class="header-methods-button">Перехват данных электронной коммерции</button>
-          <button class="header-methods-button">Мошенническое ПО</button>
-          <button class="header-methods-button">Кибер-мошенничество</button>
+          <button v-for="(name, index) in methodsName"
+                  class="header-methods-button"
+                  :key="index"
+                  :id="'button-' + index"
+                  @click="selectMethod(index)">
+            {{name}}
+          </button>
         </div>
 
       </div>
       <div class="method-div">
-        <div class="method-text">  Значимость этих проблем настолько очевидна, что сложившаяся структура организации играет важную роль в
-          формировании форм воздействия. Значимость этих проблем настолько очевидна, что постоянное информационно-техническое
-          обеспечение нашей деятельности в значительной степени обуславливает создание позиций, занимаемых участниками
-          в отношении поставленных задач? Дорогие друзья, курс на социально-ориентированный национальный проект
-          в значительной степени обуславливает создание дальнейших направлений развития проекта. Разнообразный и
-          богатый опыт сложившаяся структура организации обеспечивает актуальность новых предложений! Повседневная
-          практика показывает, что выбранный нами инновационный путь напрямую зависит от новых предложений. Дорогие
-          друзья, курс на социально-ориентированный национальный проект в значительной степени обуславливает создание
-          дальнейших направлений развития проекта. Разнообразный и богатый опыт сложившаяся структура организации
-          обеспечивает актуальность новых предложений! Повседневная практика показывает, что выбранный нами инновационный
-          путь напрямую зависит от новых предложений.</div>
+        <div class="method-text" id="text">{{activeText}}</div>
 
       </div>
     </div>
@@ -77,7 +68,34 @@ export default {
     return {
       images: {
         arrows: require("@/assets/arrows.png")
-      }
+      },
+      methodsName: ["Фишинг", "Троян-вымогатель", "Взлом деловой электронной почты", "Перехват данных электронной комерции",
+      "Мошенническое ПО", "Кибер-мошенничество"],
+      methodsText: [
+       "text1",
+          "text2",
+          "text3",
+          "text4",
+          "text5",
+        "text6"
+      ],
+      activeText: ""
+    }
+  },
+
+  methods: {
+
+    selectMethod(id) {
+       this.activeText = this.methodsText[id]
+    }
+  },
+
+  mounted() {
+    if (this.methodsText.length > 0) {
+      this.activeText = this.methodsText[0]
+      // document.getElementById("button-0").className += "header-methods-button-active"
+    } else {
+      this.activeText = "Текст не найден"
     }
   }
 }
@@ -254,12 +272,37 @@ export default {
   align-items: center;
 }
 
+
+.header-methods-button:focus, .header-methods-button:active {
+  outline: none
+}
+
+.header-methods-button:hover {
+  background: rgba(36, 42, 48, 0.7);
+  backdrop-filter: blur(3px);
+  -webkit-transition: all 0.3s ease;;
+  -moz-transition: all 0.3s ease;;
+  -o-transition: all 0.3s ease;;
+  transition: all 0.3s ease;
+}
+
+.header-methods-button-active {
+  background: rgba(36, 42, 48, 0.7);
+  backdrop-filter: blur(3px);
+}
+
+
 .header-methods-button {
   margin: 0 0.2em 0 0.2em;
   width: 100%;
   height: 70%;
 
-  background: rgba(36, 42, 48, 0.7);
+  -webkit-transition: all 0.3s ease;;
+  -moz-transition: all 0.3s ease;;
+  -o-transition: all 0.3s ease;;
+  transition: all 0.3s ease;
+
+  background: rgba(36, 42, 48, 0);
   backdrop-filter: blur(3px);
 
   border-radius: 46px;

@@ -3,12 +3,13 @@
     <div class="title">РОССИЙСКАЯ ФЕДЕРАЦИЯ</div>
     <div class="header-methods-div">
       <div class="header-methods-buttons">
-        <button class="header-methods-button">Фишинг</button>
-        <button class="header-methods-button">Троян-вымогатель</button>
-        <button class="header-methods-button">Взлом деловой электронной почты</button>
-        <button class="header-methods-button">Перехват данных электронной коммерции</button>
-        <button class="header-methods-button">Мошенническое ПО</button>
-        <button class="header-methods-button">Кибер-мошенничество</button>
+        <button v-for="(name, index) in methodsName"
+                class="header-methods-button"
+                :key="index"
+                :id="'button-' + index"
+                @click="selectMethod(index)">
+          {{name}}
+        </button>
       </div>
     </div>
     <div class="row">
@@ -17,7 +18,7 @@
         <div class="legend">
           <div class="row1">
             <div class="line1-legend"></div>
-            <div class="text-legend">Метод СИ - ФИШИНГ</div>
+            <div class="text-legend">Метод СИ - {{ activeText.title.toUpperCase()}}</div>
           </div>
           <div class="row1">
             <div class="line2-legend"></div>
@@ -26,19 +27,11 @@
         </div>
       </div>
       <div class="background-body2">
-        <div class="title-method">Фишинг</div>
+        <div class="title-method">{{ activeText.title}}</div>
         <div class="text-container">
           <div class="line"></div>
           <div class="text-method">
-            Значимость этих проблем настолько очевидна, что сложившаяся структура организации играет важную роль
-            в формировании форм воздействия. Значимость этих проблем настолько очевидна, что постоянное
-            информационно-техническое обеспечение нашей деятельности в значительной степени обуславливает создание
-            позиций, занимаемых участниками в отношении поставленных задач? Дорогие друзья, курс на
-            социально-ориентированный национальный проект в значительной степени обуславливает создание дальнейших
-            направлений развития проекта. Разнообразный и богатый опыт сложившаяся структура организации обеспечивает
-            актуальность новых предложений!Значимость этих проблем настолько очевидна, что сложившаяся структура
-            организации играет важную роль в формировании форм воздействия. Значимость этих проблем настолько очевидна,
-            что сложившаяся структура организации играет важную роль в формировании форм воздействия.
+            {{ activeText.text}}
           </div>
         </div>
       </div>
@@ -54,7 +47,39 @@ export default {
     return {
       images: {
         graph: require("@/assets/graph.png")
+      },
+      methodsName: ["Фишинг", "Троян-вымогатель", "Взлом деловой электронной почты", "Перехват данных электронной комерции",
+        "Мошенническое ПО", "Кибер-мошенничество"],
+      methodsText: [
+        "text1",
+        "text2",
+        "text3",
+        "text4",
+        "text5",
+        "text6"
+      ],
+      activeText: {
+        title: "",
+        text: "",
       }
+    }
+  },
+
+  methods: {
+
+    selectMethod(id) {
+      this.activeText.text = this.methodsText[id]
+      this.activeText.title = this.methodsName[id]
+    }
+  },
+
+  mounted() {
+    if (this.methodsText.length > 0) {
+      this.activeText.text = this.methodsText[0]
+      this.activeText.title = this.methodsName[0]
+    } else {
+      this.activeText.text = "Текст не найден"
+      this.activeText.title = "Заголовок"
     }
   }
 }
@@ -84,7 +109,7 @@ export default {
 .header-methods-div {
   margin: 1em 3em 4em 3em;
   height: 94px;
-  background: rgba(62, 62, 62, 0.3);
+  background: rgba(62, 62, 62, 0.5);
   border-radius: 46px;
 }
 
@@ -96,21 +121,48 @@ export default {
   align-items: center;
 }
 
+.header-methods-button:focus, .header-methods-button:active {
+  outline: none
+}
+
+.header-methods-button:hover {
+  background: rgba(36, 42, 48, 0.7);
+  backdrop-filter: blur(3px);
+  -webkit-transition: all 0.3s ease;;
+  -moz-transition: all 0.3s ease;;
+  -o-transition: all 0.3s ease;;
+  transition: all 0.3s ease;
+}
+
+.header-methods-button-active {
+  background: rgba(36, 42, 48, 0.7);
+  backdrop-filter: blur(3px);
+}
+
+
 .header-methods-button {
-  /*width: 290px;*/
   margin: 0 0.2em 0 0.2em;
   width: 100%;
   height: 70%;
 
-  background: rgba(61, 61, 61, 0.36);
+  -webkit-transition: all 0.3s ease;;
+  -moz-transition: all 0.3s ease;;
+  -o-transition: all 0.3s ease;;
+  transition: all 0.3s ease;
+
+  background: rgba(36, 42, 48, 0);
   backdrop-filter: blur(3px);
+
   border-radius: 46px;
   border: 0;
+
   font-family: Jura,sans-serif;
   font-style: normal;
   font-size: 20px;
   line-height: 116.3%;
+  /* or 23px */
   letter-spacing: 0.05em;
+
   color: #FFFFFF;
 }
 
@@ -129,14 +181,14 @@ export default {
 .background-body1 {
   width: 50%;
   margin: 0 4em 2em 2em;
-  background: rgba(62, 62, 62, 0.4);
+  background: rgba(62, 62, 62, 0.5);
   backdrop-filter: blur(18px);
 }
 
 .background-body2 {
   width: 50%;
   margin: 0 2em 2em 2em;
-  background: rgba(62, 62, 62, 0.4);
+  background: rgba(62, 62, 62, 0.5);
   backdrop-filter: blur(18px);
 }
 
