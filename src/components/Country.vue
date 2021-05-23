@@ -4,10 +4,11 @@
         ВЫБЕРИТЕ НЕОБХОДИМУЮ ОБЛАСТЬ ДЛЯ ПРОДОЛЖЕНИЯ
     </div>
     <div class="select-country-background">
-        <div class="map-russian-div " @mouseover="mouseOverRussianMap" @mouseleave="mouseLeaveRussianMap">
-          <img :src="russianMap" v-if="isRussianMap" class="map-russian" >
+        <div class="map-russian-div " @mouseover="mouseOverRussianMap" @mouseleave="mouseLeaveRussianMap" >
+          <img :src="russianMap" v-if="isRussianMap" class="map-russian" v-on:click="moveRussia">
         </div>
-      <img :src="currentMap" @mouseover="mouseOverCurrentMap" @mouseleave="mouseLeaveCurrentMap" class="map-img"/>
+      <img :src="currentMap" @mouseover="mouseOverCurrentMap" @mouseleave="mouseLeaveCurrentMap" class="map-img"
+           v-on:click="moveWorld"/>
 
         <div class="content">
           <!--Россия -->
@@ -84,6 +85,14 @@ export default {
       this.isRussianMap = false
       const title = document.getElementsByClassName("title")[0]
       title.classList.remove("shadow")
+    },
+
+    moveWorld() {
+      window.scrollTo({top: 5980, behavior: 'smooth'});
+    },
+
+    moveRussia() {
+      window.scrollTo({top: 4900, behavior: 'smooth'});
     }
   },
 

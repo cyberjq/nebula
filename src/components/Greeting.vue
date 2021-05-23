@@ -31,12 +31,9 @@ export default {
 
   methods: {
     start() {
-      const offset = window.scrollY
-      const offsetPosition = 1080 - offset;
-      window.scrollBy({top: offsetPosition, behavior: 'smooth'});
+      window.scrollTo({top: 1080, behavior: 'smooth'});
 
       const body = document.getElementsByTagName("body")[0];
-      console.log(body);
       body.style.overflow = "auto";
 
     },
