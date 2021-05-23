@@ -14,7 +14,8 @@
     </div>
     <div class="row">
       <div class="background-body1">
-        <img :src="images.graph" class="graph"/>
+        <apexchart type="line"  :options="chartOptions" :series="series"></apexchart>
+<!--        <img :src="images.graph" class="graph"/>-->
         <div class="legend">
           <div class="row1">
             <div class="line1-legend"></div>
@@ -43,6 +44,8 @@
 export default {
   name: "Russia",
 
+
+
   data() {
     return {
       images: {
@@ -63,6 +66,91 @@ export default {
         text: "",
       },
       currentId: 0,
+
+      series: [{
+        name: "",
+        data: [10, 41, 35, 51, 49, 62, 69, 91, 148],
+        color: "#0FDBBB"
+      },
+        {
+          name: "",
+          data: [1, 2, 35, 51, 12, 62, 69, 2, 148],
+          color: "#FC2847"
+        }],
+
+      chartOptions: {
+        chart: {
+          height: 350,
+          type: 'line',
+          zoom: {
+            enabled: false
+          },
+          fontFamily: 'Jura, sans-serif',
+
+        },
+        dataLabels: {
+          enabled: false
+        },
+        stroke: {
+          curve: 'smooth'
+        },
+        title: {
+          text: '',
+          align: 'left'
+        },
+        grid: {
+          show: false,
+        },
+        xaxis: {
+          categories: ['1000', '1000', '1000', '1000', '1000', '1000', '1000', '1000', '1000'],
+          axisTicks: {
+            show: true
+          },
+          axisBorder: {
+            show: true,
+            color: "#FFFFFF"
+          },
+          labels: {
+            style: {
+              colors: "#FFFFFF"
+            }
+          },
+          title: {
+            text: "years",
+            style: {
+              color: "#FFFFFF",
+              fontWeight: "noramal",
+              fontSize: '16px',
+            }
+          }
+        },
+        yaxis: [
+          {
+            axisTicks: {
+              show: true
+            },
+            axisBorder: {
+              show: true,
+              color: "#FFFFFF"
+            },
+            labels: {
+              style: {
+                colors: "#FFFFFF"
+              }
+            },
+            title: {
+              text: "%",
+              style: {
+                color: "#FFFFFF",
+                fontWeight: "noramal",
+                fontSize: '16px',
+              }
+            }
+          }],
+        legend: {
+          show: false,
+        }
+      }
     }
   },
 
@@ -79,7 +167,11 @@ export default {
       const button1 = document.getElementById("button-russia-" + this.currentId)
       button1.classList.remove("header-methods-button-active")
       button1.classList.add("header-methods-button")
+
+      // this.series[0].name = this.methodsName[id]
+
       this.currentId = id;
+
     }
   },
 
@@ -87,6 +179,8 @@ export default {
     if (this.methodsText.length > 0) {
       this.activeText.text = this.methodsText[0]
       this.activeText.title = this.methodsName[0]
+
+      // this.series[0].name = this.methodsName[0]
 
       const button = document.getElementById("button-russia-0")
       button.classList.remove("header-methods-button")
