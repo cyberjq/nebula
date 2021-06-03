@@ -16,9 +16,6 @@
 <script>
 export default {
   name: 'Greeting',
-  props: {
-    msg: String
-  },
 
   data() {
     return {

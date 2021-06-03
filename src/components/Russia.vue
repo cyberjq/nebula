@@ -44,19 +44,34 @@
 export default {
   name: "Russia",
 
-
-
   data() {
     return {
       images: {
         graph: require("@/assets/graph.png")
       },
-      methodsName: ["Фишинг", "Троян-вымогатель", "Взлом деловой электронной почты", "Перехват данных электронной комерции",
-        "Мошенническое ПО", "Кибер-мошенничество"],
+      methodsName: ["Фишинг", "Троян-вымогатель", "ВПО"],
       methodsText: [
-        "text1",
-        "text2",
+        "Фишингом (англ. phishing от fishing – «рыбная ловля», «выуживание») называют получение информации " +
+        "в Интернет-пространстве за счёт невнимательности жертвы. Данный метод является одним из самых популярных " +
+        "в социальной инженерии. Обычно он представляет собой массовые рассылки спама по электронной почте. " +
+        "Потенциальным жертвам приходят письма якобы от сервисов, которыми они пользуются: платежных систем, " +
+        "онлайн-магазинов и т.п. Чтобы вызвать больше доверия, мошенники придумывают серьезные причины для перехода" +
+        " по ссылке: например, просят жертву обновить пароль или подтвердить какое-то действие в системе. " +
+        "Несмотря на распространенность данного метода социальной инженерии, многие, тем не менее, " +
+        "попадаются на его «удочку».",
         "text3",
+        "Внедрение вредоносного ПО в настоящее время активно применяется в социальных сетях путём взлома электронной " +
+        "почты или учётной записи пользователя. Таким образом злоумышленник получает доступ к контактам жертвы, " +
+        "чтобы потом от её имени разослать ссылку на вредоносное ПО.\n Ввиду ситуации " +
+        "с коронавирусом произошло усложнение фишинговых схем. В этих условиях специалистами, " +
+        "занимающимися анализом современных киберпреступлений, было введено новое определение " +
+        "для описания данных видов кибератак – «социально спроектированное вредоносное ПО», " +
+        "которое злоумышленники стали чаще использовать для повышения шансов заражения компьютеров пользователей." +
+        " Привлекая внимание потенциальной жертвы фишинговыми методами, они повышают вероятность" +
+        " проникновения вредоносного объекта в компьютер пользователя. Другими словами, фишинг стал " +
+        "проводником вредоносных ПО. В ходе использования нового метода мы можем увидеть более изощрённое" +
+        " манипулирование сознанием обычных пользователей Интернета, которые начинают доверять хакерам и " +
+        "предоставляют им необходимую информацию.\n",
         "text4",
         "text5",
         "text6"
@@ -119,7 +134,7 @@ export default {
             text: "years",
             style: {
               color: "#FFFFFF",
-              fontWeight: "noramal",
+              fontWeight: "normal",
               fontSize: '16px',
             }
           }
@@ -215,15 +230,14 @@ export default {
 }
 
 .header-methods-div {
-  margin: 1em 3em 4em 3em;
-  height: 94px;
-  background: rgba(62, 62, 62, 0.5);
-  border-radius: 46px;
+  margin: 3em 5em 0 5em;
+  height: 100px;
+  background: rgba(36, 42, 48, 0.55);
 }
 
 .header-methods-buttons {
   height: 100%;
-  padding: 0 1em 0 1em;
+  /*padding: 0 1em 0 1em;*/
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -234,12 +248,7 @@ export default {
 }
 
 .header-methods-button:hover {
-  background: rgba(36, 42, 48, 0.7);
-  backdrop-filter: blur(3px);
-  -webkit-transition: all 0.3s ease;;
-  -moz-transition: all 0.3s ease;;
-  -o-transition: all 0.3s ease;;
-  transition: all 0.3s ease;
+  border-bottom: 4px solid #F73C57;
 }
 
 .header-methods-button-active:focus, .header-methods-button-active:active {
@@ -247,54 +256,33 @@ export default {
 }
 
 .header-methods-button-active {
-  background: rgba(36, 42, 48, 0.7);
-  backdrop-filter: blur(3px);
-  margin: 0 0.2em 0 0.2em;
   width: 100%;
-  height: 70%;
-
-  -webkit-transition: all 0.3s ease;;
-  -moz-transition: all 0.3s ease;;
-  -o-transition: all 0.3s ease;;
-  transition: all 0.3s ease;
-
-  border-radius: 46px;
-  border: 0;
-
+  height: 100%;
   font-family: Jura,sans-serif;
   font-style: normal;
   font-size: 20px;
   line-height: 116.3%;
   /* or 23px */
   letter-spacing: 0.05em;
-
+  background: rgba(255, 255, 255, 0);
+  border: 0;
+  border-bottom: 4px solid #F73C57;
   color: #FFFFFF;
+  text-shadow: 0px 0px 16px #ECECEC;
 }
 
 
 .header-methods-button {
-  margin: 0 0.2em 0 0.2em;
   width: 100%;
-  height: 70%;
-
-  -webkit-transition: all 0.3s ease;;
-  -moz-transition: all 0.3s ease;;
-  -o-transition: all 0.3s ease;;
-  transition: all 0.3s ease;
-
-  background: rgba(36, 42, 48, 0);
-  backdrop-filter: blur(3px);
-
-  border-radius: 46px;
-  border: 0;
-
+  height: 100%;
   font-family: Jura,sans-serif;
   font-style: normal;
   font-size: 20px;
   line-height: 116.3%;
   /* or 23px */
   letter-spacing: 0.05em;
-
+  background: rgba(255, 255, 255, 0);
+  border: 0;
   color: #FFFFFF;
 }
 
@@ -312,15 +300,15 @@ export default {
 
 .background-body1 {
   width: 50%;
-  margin: 0 4em 2em 2em;
-  background: rgba(62, 62, 62, 0.5);
+  /*margin: 0 4em 2em 2em;*/
+  background: rgba(36, 42, 48, 0.55);
   backdrop-filter: blur(18px);
 }
 
 .background-body2 {
   width: 50%;
-  margin: 0 2em 2em 2em;
-  background: rgba(62, 62, 62, 0.5);
+  /*margin: 0 2em 2em 2em;*/
+  background: rgba(36, 42, 48, 0.55);
   backdrop-filter: blur(18px);
 }
 

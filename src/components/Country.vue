@@ -55,10 +55,6 @@ export default {
       russianMap: "",
       isRussianMap: false,
 
-      classObject: {
-        active: false,
-        position: "absolute"
-      }
     }
   },
 
@@ -136,10 +132,6 @@ export default {
 .map-img {
   margin: 6em 6em 6em 6em;
 
-}
-
-.map-russian:hover {
-  visibility: visible;
 }
 
 .map-russian-div {
