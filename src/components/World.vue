@@ -75,15 +75,10 @@ export default {
         "text5",
         "text6"
       ],
-      activeText: {
-        title: "",
-        text: "",
-      },
-      currentId: 0,
 
-      series: [{
+      seriesList: [[{
         name: "",
-        data: [10, 41, 35, 51, 49, 62, 69, 91, 148],
+        data:  [10, 41, 35, 51, 49, 62, 69, 91, 148],
         color: "#0FDBBB"
       },
         {
@@ -91,6 +86,34 @@ export default {
           data: [1, 2, 35, 51, 12, 62, 69, 2, 148],
           color: "#FC2847"
         }],
+        [{
+          name: "",
+          data:  [10, 41, 35, 51, 49, 62, 69, 91, 2],
+          color: "#0FDBBB"
+        },
+          {
+            name: "",
+            data: [1, 2, 35, 51, 12, 62, 69, 2, 148],
+            color: "#FC2847"
+          }],
+        [{
+          name: "",
+          data:  [10, 41, 35, 51, 49, 5, 69, 91, 148],
+          color: "#0FDBBB"
+        },
+          {
+            name: "",
+            data: [1, 2, 35, 51, 12, 62, 69, 2, 148],
+            color: "#FC2847"
+          }]],
+
+      activeText: {
+        title: "",
+        text: "",
+      },
+      currentId: 0,
+
+      series: [],
 
       chartOptions: {
         chart: {
@@ -182,6 +205,7 @@ export default {
       const button1 = document.getElementById("button-world-" + this.currentId)
       button1.classList.remove("header-methods-button-active")
       button1.classList.add("header-methods-button")
+      this.series = this.seriesList[id]
       this.currentId = id;
     }
   },
@@ -198,6 +222,7 @@ export default {
       this.activeText.text = "Текст не найден"
       this.activeText.title = "Заголовок"
     }
+    this.series = this.seriesList[0]
   }
 }
 </script>
